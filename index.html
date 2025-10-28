@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>淺色 Duolingo 風格網頁作業</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <style>
+    body {
+      font-family: '微軟正黑體', 'Arial', sans-serif;
+      background-color: #d4f7a3;
+      color: #1b4332;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #7ac142;
+      color: white;
+      text-align: center;
+      padding: 1.5em 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin-bottom: 0.5em;
+      font-size: 1.8em;
+      text-shadow: 1px 1px 2px #a0c97f;
+    }
+
+    /* Tabs */
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: #e6f7c0;
+      border-bottom: 3px solid #7ac142;
+    }
+
+    .tab-button {
+      background: none;
+      border: none;
+      color: #1b4332;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 15px 25px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .tab-button:hover {
+      color: #ffffff;
+      background: #7ac142;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .tab-button.active {
+      background: #7ac142;
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 30px 20px;
+      background: #f7ffe6;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      margin: 20px auto;
+      max-width: 1000px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    h2 { color: #7ac142; border-bottom: 2px solid #7ac142; padding-bottom: 10px; }
+
+    .intro-box {
+      border: 2px solid #7ac142;
+      background-color: #e6f7c0;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin: 20px auto;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none; border-radius: 10px;
+    }
+
+    .photo-container img {
+      max-width: 300px;
+      display: block;
+      margin: 20px auto;
+      border: 3px solid #7ac142;
+      border-radius: 10px;
+    }
+
+    #myPlot { width: 100% !important; height: 400px !important; }
+
+    footer {
+      background: #7ac142;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+    footer a { color: #ffd700; }
+
+    @media (max-width: 768px) {
+      .tab-button { padding: 10px 15px; font-size: 0.9em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>淺色 Duolingo 風格網站</h1>
+  </header>
+
+  <!-- Tabs -->
+  <div class="tab-container">
+    <button class="tab-button active" data-tab="about">人員介紹</button>
+    <button class="tab-button" data-tab="media">多媒體展示</button>
+    <button class="tab-button" data-tab="data">數據分析</button>
+    <button class="tab-button" data-tab="links">同學網站</button>
+  </div>
+
+  <!-- 人員介紹 -->
+  <div id="about" class="tab-content active">
+    <h2>人員介紹 / 關於我</h2>
+    <div class="intro-box">
+      <p><strong>這是一個淺色 Duolingo 主題網頁作業</strong></p>
+      <p>展示單頁架構、響應式設計、多媒體嵌入及 Duolingo 主題統計圖。</p>
+      <p>感謝您的審閱。</p>
+    </div>
+  </div>
+
+  <!-- 多媒體展示 -->
+  <div id="media" class="tab-content">
+    <h2>最喜愛的 Duolingo 媒體</h2>
+    <div class="video-container">
+<iframe width="914" height="514" src="https://www.youtube.com/embed/FB4_ZP-pVaU" title="Why Is Duo Ripped Now? | A Duolingo Telenovela" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+    <h3>Duo 圖片</h3>
+    <div class="photo-container">
+      <img src="https://obs.line-scdn.net/0hmuGBvWXNMlp6OyXAMFtNDURtb3QBSCtIB0M_PFozOWteDXAOTw4obAw8P2tfDnUMEg18blk_O21WCSc" alt="Duolingo 圖片">
+    </div>
+  </div>
+
+  <!-- 數據分析 -->
+  <div id="data" class="tab-content">
+    <h2>統計圖表 (Duolingo 主題)</h2>
+    <div id="myPlot"></div>
+  </div>
+
+  <!-- 同學網站 -->
+  <div id="links" class="tab-content">
+    <h2>作業項目 7：超連結班上三位同學的網站</h2>
+    <ul>
+      <li><a href="https://momo20031013-afk.github.io/zhoushen-momo/" target="_blank">鄭品均</a></li>
+      <li><a href="https://elaine951004-ops.github.io/weare71th/index2.html" target="_blank">陳昕珮</a></li>
+      <li><a href="https://tsai8698.github.io/game-HSR/%E7%B6%B2%E9%9A%9B%E7%B6%B2%E8%B7%AF.html" target="_blank">GINA 蔡</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 淺色 Duolingo 網站 | 已上架至 
+    <a href="https://github.com/a6706976-5455" target="_blank">GitHub Pages</a>
+  </footer>
+
+  <script>
+    // Tab switching
+    const tabs = document.querySelectorAll(".tab-button");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabs.forEach(b => b.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    // Plotly chart
+    document.addEventListener('DOMContentLoaded', function() {
+      const languages = ["英語", "西班牙語", "法語", "德語", "日語"];
+      const users = [2000000, 1500000, 1000000, 800000, 500000]; 
+
+      const data = [{
+        x: languages,
+        y: users,
+        type: "bar",
+        marker: { color: '#7ac142' } 
+      }];
+
+      const layout = {
+        title: { text: "全球 Duolingo 語言用戶數量", font: { color: '#1b4332' } },
+        paper_bgcolor: '#f7ffe6',
+        plot_bgcolor: '#ffffff',
+        xaxis: { title: "語言", tickfont: { color: '#1b4332' }, titlefont: { color: '#7ac142' }, gridcolor: '#ccc' },
+        yaxis: { title: "用戶數", tickfont: { color: '#1b4332' }, titlefont: { color: '#7ac142' }, gridcolor: '#ccc' }
+      };
+
+      Plotly.newPlot("myPlot", data, layout);
+    });
+  </script>
+</body>
+</html>
